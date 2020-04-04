@@ -4,6 +4,19 @@
   
   
   <entry>
+    <title>SimpleDateFormat日期格式化</title>
+    <link href="/2020/04/04/SimpleDateFormat%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F%E5%8C%96/"/>
+    <url>/2020/04/04/SimpleDateFormat%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F%E5%8C%96/</url>
+    
+    <content type="html"><![CDATA[<h3 id="SimpleDateFormat日期格式化"><a href="#SimpleDateFormat日期格式化" class="headerlink" title="SimpleDateFormat日期格式化"></a>SimpleDateFormat日期格式化</h3><p>​       通常在使用SimpleDateFormat对日期进行格式化的时候，使用的格式化模板一般为”yyyy-MM-dd HH:mm:ss”，最近这次按照老套路对日期进行格式化的时候，输入是将”yyyy-MM-dd HH:mm:ss”输入成”yyyy-MM-dd hh:mm:ss”了，在用echart生成图表时就出现了一些问题，刚开始以为数据库与Java的日期格式不匹配，最后才发现了是H的大小写的问题，于是就去全面的学习了一下日期格式中个字母代表的意义：</p><p>yyyy：年<br>MM：月<br>dd：日<br>hh：1~12小时制(1-12)<br>HH：24小时制(0-23)<br>mm：分<br>ss：秒<br>S：毫秒<br>E：星期几<br>D：一年中的第几天<br>F：一月中的第几个星期(会把这个月总共过的天数除以7)<br>w：一年中的第几个星期<br>W：一月中的第几星期(会根据实际情况来算)<br>a：上下午标识<br>k：与HH相同，24小时制(1-24)<br>K：与hh相同，12小时制</p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Hello World</title>
     <link href="/2020/03/18/hello-world/"/>
     <url>/2020/03/18/hello-world/</url>
