@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="7hyya">
   <meta name="keywords" content="">
-  <title>SimpleDateFormat日期格式化 - 7hyya&#39;s blog</title>
+  <title>MySQL常见的7种通用的Join查询 - 7hyya&#39;s blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/5.12.1/css/all.min.css" />
 <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
@@ -124,7 +124,7 @@
               
                 <p class="mt-3 post-meta">
                   <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-                  Saturday, April 4th 2020, 9:52 am
+                  Tuesday, April 21st 2020, 6:25 pm
                 </p>
               
 
@@ -133,7 +133,7 @@
                   
                   <span class="post-meta">
                     <i class="far fa-chart-bar"></i>
-                    272 字
+                    382 字
                   </span>
                 
 
@@ -169,8 +169,51 @@
           <div class="post-content mx-auto" id="post">
             
             <div class="markdown-body">
-              <h3 id="SimpleDateFormat日期格式化"><a href="#SimpleDateFormat日期格式化" class="headerlink" title="SimpleDateFormat日期格式化"></a>SimpleDateFormat日期格式化</h3><p>​       通常在使用SimpleDateFormat对日期进行格式化的时候，使用的格式化模板一般为”yyyy-MM-dd HH:mm:ss”，最近这次按照老套路对日期进行格式化的时候，输入是将”yyyy-MM-dd HH:mm:ss”输入成”yyyy-MM-dd hh:mm:ss”了，在用echart生成图表时就出现了一些问题，刚开始以为数据库与Java的日期格式不匹配，最后才发现了是H的大小写的问题，于是就去全面的学习了一下日期格式中个字母代表的意义：</p>
-<p>yyyy：年<br>MM：月<br>dd：日<br>hh：1~12小时制(1-12)<br>HH：24小时制(0-23)<br>mm：分<br>ss：秒<br>S：毫秒<br>E：星期几<br>D：一年中的第几天<br>F：一月中的第几个星期(会把这个月总共过的天数除以7)<br>w：一年中的第几个星期<br>W：一月中的第几星期(会根据实际情况来算)<br>a：上下午标识<br>k：与HH相同，24小时制(1-24)<br>K：与hh相同，12小时制</p>
+              <h1 id="MySQL常见的7种通用的Join查询"><a href="#MySQL常见的7种通用的Join查询" class="headerlink" title="MySQL常见的7种通用的Join查询"></a>MySQL常见的7种通用的Join查询</h1><p>举例中的表记录如下：</p>
+<p><img src="C:%5CUsers%5Clenovo%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200421175001635.png" srcset="/img/loading.gif" alt="Student表"></p>
+<p><img src="C:%5CUsers%5Clenovo%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200421175111146.png" srcset="/img/loading.gif" alt="Course表"></p>
+<p><img src="C:%5CUsers%5Clenovo%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200421175148223.png" srcset="/img/loading.gif" alt="选课表"></p>
+<p><strong>SQL JOIN: SQL join 用于根据两个或多个表中的列之间的关系，从这些表中查询数据。</strong></p>
+<ol>
+<li>*<em>INNER JOIN (等值连接) *</em>只返回两个表中联结字段相等的行,如下图所示：</li>
+</ol>
+<p><img src="C:%5CUsers%5Clenovo%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200421174446625.png" srcset="/img/loading.gif" alt="image-20200421174446625"></p>
+<p>SQL语句：</p>
+<pre><code class="sql">SELECT &lt;select_list&gt; FROM TableA A INNER JOIN TableB B ON A.key = B.Key</code></pre>
+<p>例如:</p>
+<pre><code class="sql">SELECT * FROM student stu INNER JOIN sc s ON stu.Sno = s.Sno;</code></pre>
+<p><img src="C:%5CUsers%5Clenovo%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200421175637331.png" srcset="/img/loading.gif" alt="image-20200421175637331"></p>
+<ol start="2">
+<li><p><strong>LEFT JOIN(左连接)</strong>返回包括左表中的所有记录和右表中联结字段相等的记录 ，右表中没有匹配的填充NULL。</p>
+<p><img src="C:%5CUsers%5Clenovo%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200421175935738.png" srcset="/img/loading.gif" alt="image-20200421175935738"></p>
+</li>
+</ol>
+<p>SQL语句：</p>
+<pre><code class="sql">SELECT &lt;select_list&gt; FROM TableA A LEFT JOIN TableB B ON A.key = B.Key</code></pre>
+<p>例如：</p>
+<pre><code class="sql">SELECT * FROM student stu LEFT JOIN sc s ON stu.Sno = s.Sno;</code></pre>
+<p><img src="C:%5CUsers%5Clenovo%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200421180142185.png" srcset="/img/loading.gif" alt="image-20200421180142185"></p>
+<ol start="3">
+<li><strong>RIGHT JOIN(右连接)</strong>返回包括右表中的所有记录和左表中联结字段相等的记录 ，左表中没有匹配的填充NULL。</li>
+</ol>
+<p><img src="C:%5CUsers%5Clenovo%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200421180500645.png" srcset="/img/loading.gif" alt="image-20200421180500645"></p>
+<p>SQL语句：</p>
+<pre><code class="sql">SELECT &lt;select_list&gt; FROM TableA A RIGHT JOIN TableB B ON A.key = B.Key</code></pre>
+<p>例如：</p>
+<pre><code class="sql">SELECT * FROM student stu RIGHT JOIN sc s ON stu.Sno = s.Sno;</code></pre>
+<p><img src="C:%5CUsers%5Clenovo%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200421180552332.png" srcset="/img/loading.gif" alt="image-20200421180552332"></p>
+<p>4.</p>
+<pre><code class="sql">SELECT &lt;select_list&gt; FROM TableA A LEFT JOIN TableB B ON A.key = B.Key WHERE B,key IS NULL</code></pre>
+<p><img src="C:%5CUsers%5Clenovo%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200421181254415.png" srcset="/img/loading.gif" alt="image-20200421181254415"></p>
+<p>5.</p>
+<pre><code class="sql">SELECT &lt;select_list&gt; FROM TableA A RIGHT JOIN TableB B ON A.key = B.Key WHERE B,key IS NULL</code></pre>
+<p><img src="C:%5CUsers%5Clenovo%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200421181330315.png" srcset="/img/loading.gif" alt="image-20200421181330315"></p>
+<p>6.</p>
+<pre><code class="sql">SELECT &lt;select_list&gt; FROM TableA A LEFT JOIN TableB B ON A.key = B.Key UNION SELECT &lt;select_list&gt; FROM TableA A RIGHT JOIN TableB B ON A.key = B.Key</code></pre>
+<p><img src="C:%5CUsers%5Clenovo%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200421181839975.png" srcset="/img/loading.gif" alt="image-20200421181839975"></p>
+<p>7.</p>
+<pre><code class="sql">SELECT &lt;select_list&gt; FROM TableA A LEFT JOIN TableB B ON A.key = B.Key WHERE B.key IS NULL UNION SELECT &lt;select_list&gt; FROM TableA A RIGHT JOIN TableB B ON A.key = B.Key WHERE A.key IS NULL;</code></pre>
+<p><img src="C:%5CUsers%5Clenovo%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200421181956238.png" srcset="/img/loading.gif" alt="image-20200421181956238"></p>
 
             </div>
             <hr>
@@ -186,16 +229,11 @@
                 <div class="post-prevnext row">
                   <div class="post-prev col-12 col-md-6">
                     
-                      <a href="/2020/04/21/MySQL%E5%B8%B8%E8%A7%81%E7%9A%847%E7%A7%8D%E9%80%9A%E7%94%A8%E7%9A%84Join%E6%9F%A5%E8%AF%A2/">
-                        <i class="fa fa-chevron-left"></i>
-                        <span>MySQL常见的7种通用的Join查询</span>
-                      </a>
-                    
                   </div>
                   <div class="post-next col-12 col-md-6">
                     
-                      <a href="/2020/03/18/hello-world/">
-                        <span>Hello World</span>
+                      <a href="/2020/04/04/SimpleDateFormat%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F%E5%8C%96/">
+                        <span>SimpleDateFormat日期格式化</span>
                         <i class="fa fa-chevron-right"></i>
                       </a>
                     
@@ -368,7 +406,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "SimpleDateFormat日期格式化&nbsp;",
+        "MySQL常见的7种通用的Join查询&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,
