@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="7hyya">
   <meta name="keywords" content="">
-  <title>MySQL常见的7种通用的Join查询 - 7hyya&#39;s blog</title>
+  <title>String的==和equals() - 7hyya&#39;s blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/5.12.1/css/all.min.css" />
 <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
@@ -124,7 +124,7 @@
               
                 <p class="mt-3 post-meta">
                   <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-                  Tuesday, April 21st 2020, 6:25 pm
+                  Monday, April 27th 2020, 9:50 pm
                 </p>
               
 
@@ -133,7 +133,7 @@
                   
                   <span class="post-meta">
                     <i class="far fa-chart-bar"></i>
-                    382 字
+                    1.2k 字
                   </span>
                 
 
@@ -141,7 +141,7 @@
                   
                   <span class="post-meta">
                       <i class="far fa-clock"></i>
-                      1 分钟
+                      4 分钟
                   </span>
                 
 
@@ -169,51 +169,93 @@
           <div class="post-content mx-auto" id="post">
             
             <div class="markdown-body">
-              <h1 id="MySQL常见的7种通用的Join查询"><a href="#MySQL常见的7种通用的Join查询" class="headerlink" title="MySQL常见的7种通用的Join查询"></a>MySQL常见的7种通用的Join查询</h1><p>举例中的表记录如下：</p>
-<p><img src="C:%5CUsers%5Clenovo%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200421175001635.png" srcset="/img/loading.gif" alt="Student表"></p>
-<p><img src="C:%5CUsers%5Clenovo%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200421175111146.png" srcset="/img/loading.gif" alt="Course表"></p>
-<p><img src="C:%5CUsers%5Clenovo%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200421175148223.png" srcset="/img/loading.gif" alt="选课表"></p>
-<p><strong>SQL JOIN: SQL join 用于根据两个或多个表中的列之间的关系，从这些表中查询数据。</strong></p>
-<ol>
-<li>*<em>INNER JOIN (等值连接) *</em>只返回两个表中联结字段相等的行,如下图所示：</li>
-</ol>
-<p><img src="C:%5CUsers%5Clenovo%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200421174446625.png" srcset="/img/loading.gif" alt="image-20200421174446625"></p>
-<p>SQL语句：</p>
-<pre><code class="sql">SELECT &lt;select_list&gt; FROM TableA A INNER JOIN TableB B ON A.key = B.Key</code></pre>
-<p>例如:</p>
-<pre><code class="sql">SELECT * FROM student stu INNER JOIN sc s ON stu.Sno = s.Sno;</code></pre>
-<p><img src="C:%5CUsers%5Clenovo%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200421175637331.png" srcset="/img/loading.gif" alt="image-20200421175637331"></p>
-<ol start="2">
-<li><p><strong>LEFT JOIN(左连接)</strong>返回包括左表中的所有记录和右表中联结字段相等的记录 ，右表中没有匹配的填充NULL。</p>
-<p><img src="C:%5CUsers%5Clenovo%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200421175935738.png" srcset="/img/loading.gif" alt="image-20200421175935738"></p>
+              <h1 id="String的-和equals"><a href="#String的-和equals" class="headerlink" title="String的==和equals()"></a>String的==和equals()</h1><h2 id="String"><a href="#String" class="headerlink" title="String"></a>String</h2><h3 id="String对象初始化"><a href="#String对象初始化" class="headerlink" title="String对象初始化"></a>String对象初始化</h3><ol>
+<li><p>Method 1：</p>
+<pre><code class="Java">String 字符串名 = &quot;字符串内容&quot;;</code></pre>
 </li>
 </ol>
-<p>SQL语句：</p>
-<pre><code class="sql">SELECT &lt;select_list&gt; FROM TableA A LEFT JOIN TableB B ON A.key = B.Key</code></pre>
-<p>例如：</p>
-<pre><code class="sql">SELECT * FROM student stu LEFT JOIN sc s ON stu.Sno = s.Sno;</code></pre>
-<p><img src="C:%5CUsers%5Clenovo%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200421180142185.png" srcset="/img/loading.gif" alt="image-20200421180142185"></p>
-<ol start="3">
-<li><strong>RIGHT JOIN(右连接)</strong>返回包括右表中的所有记录和左表中联结字段相等的记录 ，左表中没有匹配的填充NULL。</li>
+<ol start="2">
+<li><p>Method 2:</p>
+<pre><code class="Java">String 字符串名 = new String(&quot;字符串内容&quot;);</code></pre>
+<p>上面两种格式生成的字符串效果是相同的，但是存储机制是存在很大区别的！</p>
+</li>
 </ol>
-<p><img src="C:%5CUsers%5Clenovo%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200421180500645.png" srcset="/img/loading.gif" alt="image-20200421180500645"></p>
-<p>SQL语句：</p>
-<pre><code class="sql">SELECT &lt;select_list&gt; FROM TableA A RIGHT JOIN TableB B ON A.key = B.Key</code></pre>
-<p>例如：</p>
-<pre><code class="sql">SELECT * FROM student stu RIGHT JOIN sc s ON stu.Sno = s.Sno;</code></pre>
-<p><img src="C:%5CUsers%5Clenovo%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200421180552332.png" srcset="/img/loading.gif" alt="image-20200421180552332"></p>
-<p>4.</p>
-<pre><code class="sql">SELECT &lt;select_list&gt; FROM TableA A LEFT JOIN TableB B ON A.key = B.Key WHERE B,key IS NULL</code></pre>
-<p><img src="C:%5CUsers%5Clenovo%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200421181254415.png" srcset="/img/loading.gif" alt="image-20200421181254415"></p>
-<p>5.</p>
-<pre><code class="sql">SELECT &lt;select_list&gt; FROM TableA A RIGHT JOIN TableB B ON A.key = B.Key WHERE B,key IS NULL</code></pre>
-<p><img src="C:%5CUsers%5Clenovo%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200421181330315.png" srcset="/img/loading.gif" alt="image-20200421181330315"></p>
-<p>6.</p>
-<pre><code class="sql">SELECT &lt;select_list&gt; FROM TableA A LEFT JOIN TableB B ON A.key = B.Key UNION SELECT &lt;select_list&gt; FROM TableA A RIGHT JOIN TableB B ON A.key = B.Key</code></pre>
-<p><img src="C:%5CUsers%5Clenovo%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200421181839975.png" srcset="/img/loading.gif" alt="image-20200421181839975"></p>
-<p>7.</p>
-<pre><code class="sql">SELECT &lt;select_list&gt; FROM TableA A LEFT JOIN TableB B ON A.key = B.Key WHERE B.key IS NULL UNION SELECT &lt;select_list&gt; FROM TableA A RIGHT JOIN TableB B ON A.key = B.Key WHERE A.key IS NULL;</code></pre>
-<p><img src="C:%5CUsers%5Clenovo%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200421181956238.png" srcset="/img/loading.gif" alt="image-20200421181956238"></p>
+<p>Java为String类提供了一种称为缓存池机制的功能。使用Method 1的方式，直接赋值生成字符串，Java编译器总是先到缓冲池中去寻找是否存在相同内容的字符串。如果存在就可以直接使用，如果不存在则在缓冲池中创建一个新的字符串。使用Method 2的方式，用new关键字调用构造方法的方式，则每次调用都会生成一个新的String对象。</p>
+<h3 id="String关于“-”和equals-的比较"><a href="#String关于“-”和equals-的比较" class="headerlink" title="String关于“==”和equals()的比较"></a>String关于“==”和equals()的比较</h3><ul>
+<li><p>“==”是关系运算符，可以用于判断基本数据类型的变量值是否相等，或者判断引用类型变量的引用地址是否相同。</p>
+</li>
+<li><p>equals()方法，用于判断引用对象的引用地址所指向的存储内容是否相等。</p>
+<p>纸上得来终觉浅，绝知此事要躬行，下面代码来证：</p>
+<pre><code class="java">public class StringDemo {
+    public static void main(String[] args) {
+        String str1 = &quot;Java String test&quot;;
+        String str2 = &quot;Java String test&quot;;
+        String str3 = new String(&quot;Java String test&quot;);
+        String str4 = str3;
+        System.out.println(&quot;str1=&quot;+str1+&quot;、str2=&quot;+str2+&quot;\n&quot;+&quot;str3=&quot;+str3+&quot;、str4=&quot;+str4);
+        if (str1 == str2) {
+            System.out.println(&quot;str1 == str2: true&quot;);
+        }else {
+            System.out.println(&quot;str1 == str2: false&quot;);
+        }
+
+        if (str3 == str4) {
+            System.out.println(&quot;str3 == str4: true&quot;);
+        }else {
+            System.out.println(&quot;str3 == str4: false&quot;);
+        }
+        if (str1 == str3) {
+            System.out.println(&quot;str1 == str3: true&quot;);
+        }else {
+            System.out.println(&quot;str1 == str3: false&quot;);
+        }
+    }
+}</code></pre>
+<p>运行之后输出结果如下：</p>
+<pre><code>str1=Java String test、str2=Java String test
+str3=Java String test、str4=Java String test
+str1 == str2: true
+str3 == str4: true
+str1 == str3: false</code></pre><p>结合下图对象在内存中的地址，来进行深入理解一下：</p>
+</li>
+</ul>
+<p><img src="D:%5C7hyyaBlog%5CHexo%5Cpublic%5Cimg%5CblogImages%5Cimage-20200427192325826.png" srcset="/img/loading.gif" alt="image-20200427192325826"></p>
+<p>从上图中可知，String类型的内容是保存在堆内存中的，栈内存仅保存指向堆内存的地址，上面说到过String使用直接赋值生成对象，会用到缓冲池机制。在执行String str1 = “Java String test”时，在缓冲池中并没有“Java String test”字符串，所以生成一个“Java String test”字符串。执行到String str2 = “Java String test”时，缓冲池中已存在“Java String test”字符串，所以不需要生成一个新的“Java String test”字符串，而是直接使用该字符串。使用new关键字调用构造方法生成字符串时，不会用到缓冲池机制。每次调用一次就会生成一个新的字符串对象。</p>
+<p>由于缓冲池机制，str1和str2使用相同的字符串对象，所以它们的内存地址是相等的，所以使用“==”关系运算符比较str1和str2结果值为true。同理，因为str1和str3指向不同的内存地址，所以str1==str3的结果值是false。从上图中可见，str3和str4指向同一内存地址，所以str3==str4的结果值为true。</p>
+<p>上面通过代码来验证出了“==”是比较的对象的内存地址，下面看看equals()，上代码：</p>
+<pre><code class="java">public class StringDemo {
+    public static void main(String[] args) {
+        String str1 = &quot;Java String test&quot;;
+        String str2 = &quot;Java String test&quot;;
+        String str3 = new String(&quot;Java String test&quot;);
+        String str4 = str3;
+        System.out.println(&quot;str1=&quot;+str1+&quot;、str2=&quot;+str2+&quot;\n&quot;+&quot;str3=&quot;+str3+&quot;、str4=&quot;+str4);
+        if (str1.equals(str2)) {
+            System.out.println(&quot;str1.equals(str2): true&quot;);
+        }else {
+            System.out.println(&quot;str1.equals(str2): false&quot;);
+        }
+
+        if (str3.equals(str4)) {
+            System.out.println(&quot;str3.equals(str4): true&quot;);
+        }else {
+            System.out.println(&quot;str3.equals(str4): false&quot;);
+        }
+        if (str1.equals(str3)) {
+            System.out.println(&quot;str1.equals(str3): true&quot;);
+        }else {
+            System.out.println(&quot;str1.equals(str3): false&quot;);
+        }
+    }
+}</code></pre>
+<p>运行结果如下：</p>
+<pre><code>str1=Java String test、str2=Java String test
+str3=Java String test、str4=Java String test
+str1.equals(str2): true
+str3.equals(str4): true
+str1.equals(str3): true
+</code></pre><p>由于equals()方法是Object类中定义的一个方法，所有的类都继承自Object类，因此该方法可以在其他引用类型中使用。在这里String已经重写了Object类的equals()方法。从运行结果并结合上图可以看出equals()方法是比较的引用对象的引用地址所指向的存储内容是否相等。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>String初始化有两种方式，一般情况下是使用 <strong>String 字符串名 = “字符串内容”</strong> 的格式，因为此格式使用缓冲池机制执行效率高，节约内存。一个字符串就是一个String类的匿名对象，匿名对象是可以直接开辟堆内存并使用的对象。<strong>String 字符串 = new String(“字符串内容”)</strong>格式分别需要开辟一个栈内存和一个堆内存。</p>
 
             </div>
             <hr>
@@ -229,16 +271,16 @@
                 <div class="post-prevnext row">
                   <div class="post-prev col-12 col-md-6">
                     
-                      <a href="/2020/04/27/String%E7%9A%84==%E5%92%8Cequals()/">
+                      <a href="/2020/04/27/%E9%9D%A2%E8%AF%95%E9%A2%98--List%E9%9B%86%E5%90%88%E5%A6%82%E4%BD%95%E5%8E%BB%E9%87%8D/">
                         <i class="fa fa-chevron-left"></i>
-                        <span>String的==和equals()</span>
+                        <span>面试题--List集合如何去重</span>
                       </a>
                     
                   </div>
                   <div class="post-next col-12 col-md-6">
                     
-                      <a href="/2020/04/04/SimpleDateFormat%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F%E5%8C%96/">
-                        <span>SimpleDateFormat日期格式化</span>
+                      <a href="/2020/04/21/MySQL%E5%B8%B8%E8%A7%81%E7%9A%847%E7%A7%8D%E9%80%9A%E7%94%A8%E7%9A%84Join%E6%9F%A5%E8%AF%A2/">
+                        <span>MySQL常见的7种通用的Join查询</span>
                         <i class="fa fa-chevron-right"></i>
                       </a>
                     
@@ -411,7 +453,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "MySQL常见的7种通用的Join查询&nbsp;",
+        "String的==和equals()&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,

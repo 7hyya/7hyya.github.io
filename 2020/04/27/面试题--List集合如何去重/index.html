@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="7hyya">
   <meta name="keywords" content="">
-  <title>MySQL常见的7种通用的Join查询 - 7hyya&#39;s blog</title>
+  <title>面试题--List集合如何去重 - 7hyya&#39;s blog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/5.12.1/css/all.min.css" />
 <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
@@ -124,7 +124,7 @@
               
                 <p class="mt-3 post-meta">
                   <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-                  Tuesday, April 21st 2020, 6:25 pm
+                  Monday, April 27th 2020, 9:51 pm
                 </p>
               
 
@@ -133,7 +133,7 @@
                   
                   <span class="post-meta">
                     <i class="far fa-chart-bar"></i>
-                    382 字
+                    566 字
                   </span>
                 
 
@@ -141,7 +141,7 @@
                   
                   <span class="post-meta">
                       <i class="far fa-clock"></i>
-                      1 分钟
+                      2 分钟
                   </span>
                 
 
@@ -169,51 +169,80 @@
           <div class="post-content mx-auto" id="post">
             
             <div class="markdown-body">
-              <h1 id="MySQL常见的7种通用的Join查询"><a href="#MySQL常见的7种通用的Join查询" class="headerlink" title="MySQL常见的7种通用的Join查询"></a>MySQL常见的7种通用的Join查询</h1><p>举例中的表记录如下：</p>
-<p><img src="C:%5CUsers%5Clenovo%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200421175001635.png" srcset="/img/loading.gif" alt="Student表"></p>
-<p><img src="C:%5CUsers%5Clenovo%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200421175111146.png" srcset="/img/loading.gif" alt="Course表"></p>
-<p><img src="C:%5CUsers%5Clenovo%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200421175148223.png" srcset="/img/loading.gif" alt="选课表"></p>
-<p><strong>SQL JOIN: SQL join 用于根据两个或多个表中的列之间的关系，从这些表中查询数据。</strong></p>
-<ol>
-<li>*<em>INNER JOIN (等值连接) *</em>只返回两个表中联结字段相等的行,如下图所示：</li>
-</ol>
-<p><img src="C:%5CUsers%5Clenovo%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200421174446625.png" srcset="/img/loading.gif" alt="image-20200421174446625"></p>
-<p>SQL语句：</p>
-<pre><code class="sql">SELECT &lt;select_list&gt; FROM TableA A INNER JOIN TableB B ON A.key = B.Key</code></pre>
-<p>例如:</p>
-<pre><code class="sql">SELECT * FROM student stu INNER JOIN sc s ON stu.Sno = s.Sno;</code></pre>
-<p><img src="C:%5CUsers%5Clenovo%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200421175637331.png" srcset="/img/loading.gif" alt="image-20200421175637331"></p>
-<ol start="2">
-<li><p><strong>LEFT JOIN(左连接)</strong>返回包括左表中的所有记录和右表中联结字段相等的记录 ，右表中没有匹配的填充NULL。</p>
-<p><img src="C:%5CUsers%5Clenovo%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200421175935738.png" srcset="/img/loading.gif" alt="image-20200421175935738"></p>
-</li>
-</ol>
-<p>SQL语句：</p>
-<pre><code class="sql">SELECT &lt;select_list&gt; FROM TableA A LEFT JOIN TableB B ON A.key = B.Key</code></pre>
-<p>例如：</p>
-<pre><code class="sql">SELECT * FROM student stu LEFT JOIN sc s ON stu.Sno = s.Sno;</code></pre>
-<p><img src="C:%5CUsers%5Clenovo%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200421180142185.png" srcset="/img/loading.gif" alt="image-20200421180142185"></p>
-<ol start="3">
-<li><strong>RIGHT JOIN(右连接)</strong>返回包括右表中的所有记录和左表中联结字段相等的记录 ，左表中没有匹配的填充NULL。</li>
-</ol>
-<p><img src="C:%5CUsers%5Clenovo%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200421180500645.png" srcset="/img/loading.gif" alt="image-20200421180500645"></p>
-<p>SQL语句：</p>
-<pre><code class="sql">SELECT &lt;select_list&gt; FROM TableA A RIGHT JOIN TableB B ON A.key = B.Key</code></pre>
-<p>例如：</p>
-<pre><code class="sql">SELECT * FROM student stu RIGHT JOIN sc s ON stu.Sno = s.Sno;</code></pre>
-<p><img src="C:%5CUsers%5Clenovo%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200421180552332.png" srcset="/img/loading.gif" alt="image-20200421180552332"></p>
-<p>4.</p>
-<pre><code class="sql">SELECT &lt;select_list&gt; FROM TableA A LEFT JOIN TableB B ON A.key = B.Key WHERE B,key IS NULL</code></pre>
-<p><img src="C:%5CUsers%5Clenovo%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200421181254415.png" srcset="/img/loading.gif" alt="image-20200421181254415"></p>
-<p>5.</p>
-<pre><code class="sql">SELECT &lt;select_list&gt; FROM TableA A RIGHT JOIN TableB B ON A.key = B.Key WHERE B,key IS NULL</code></pre>
-<p><img src="C:%5CUsers%5Clenovo%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200421181330315.png" srcset="/img/loading.gif" alt="image-20200421181330315"></p>
-<p>6.</p>
-<pre><code class="sql">SELECT &lt;select_list&gt; FROM TableA A LEFT JOIN TableB B ON A.key = B.Key UNION SELECT &lt;select_list&gt; FROM TableA A RIGHT JOIN TableB B ON A.key = B.Key</code></pre>
-<p><img src="C:%5CUsers%5Clenovo%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200421181839975.png" srcset="/img/loading.gif" alt="image-20200421181839975"></p>
-<p>7.</p>
-<pre><code class="sql">SELECT &lt;select_list&gt; FROM TableA A LEFT JOIN TableB B ON A.key = B.Key WHERE B.key IS NULL UNION SELECT &lt;select_list&gt; FROM TableA A RIGHT JOIN TableB B ON A.key = B.Key WHERE A.key IS NULL;</code></pre>
-<p><img src="C:%5CUsers%5Clenovo%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200421181956238.png" srcset="/img/loading.gif" alt="image-20200421181956238"></p>
+              <h1 id="List集合如何去重"><a href="#List集合如何去重" class="headerlink" title="List集合如何去重"></a>List集合如何去重</h1><p>在个人经历人生的第一次面试的时候，面试官上来的第一个问题就是问个Java基础，说一下List如何去重吧！</p>
+<p>在正常情况下，我是能在自己独立思考的基础上想出一个办法的，但是在面试官的面前就突然大脑空白了。在出公司大楼之后，复盘整个面试过程，立马就想到了List如何去重，方法如下：</p>
+<h3 id="1-用Set集合"><a href="#1-用Set集合" class="headerlink" title="1. 用Set集合"></a>1. 用Set集合</h3><pre><code class="java">public static List&lt;String&gt; del_duplication(List&lt;String&gt; list){
+    // 用TreeSet
+    List&lt;String&gt; listNew = new ArrayList&lt;String&gt;(new TreeSet&lt;String&gt;(list));
+    return listNew;
+}
+public static void main(String[] args) {
+        List&lt;String&gt; list = new ArrayList&lt;String&gt;();
+        list.add(&quot;1&quot;);
+        list.add(&quot;2&quot;);
+        list.add(&quot;3&quot;);
+        list.add(&quot;4&quot;);
+        list.add(&quot;5&quot;);
+        list.add(&quot;6&quot;);
+        list.add(&quot;2&quot;);
+        list.add(&quot;1&quot;);
+        System.out.println(&quot;去重前：&quot;+list);
+        list = del_duplication(list);
+        System.out.println(&quot;去重后：&quot;+list);
+    }</code></pre>
+<p>控制台输出结果：</p>
+<p>去重前：[1, 2, 3, 4, 5, 6, 2, 1]<br>去重后：[1, 2, 3, 4, 5, 6]</p>
+<h3 id="2-新建一个List"><a href="#2-新建一个List" class="headerlink" title="2. 新建一个List"></a>2. 新建一个List</h3><pre><code class="java">    /**
+     * 遍历后判断赋给另一个list集合，保持原来顺序
+     * 
+     * @param list
+     * @return
+     */
+    public static List&lt;String&gt; del_duplication2(List&lt;String&gt; list) {
+        List&lt;String&gt; listNew = new ArrayList&lt;String&gt;();
+        for (String str : list) {
+            if (!listNew.contains(str)) {
+                listNew.add(str);
+            }
+        }
+        return listNew;
+    }
+    public static void main(String[] args) {
+            List&lt;String&gt; list = new ArrayList&lt;String&gt;();
+            list.add(&quot;1&quot;);
+            list.add(&quot;2&quot;);
+            list.add(&quot;3&quot;);
+            list.add(&quot;4&quot;);
+            list.add(&quot;5&quot;);
+            list.add(&quot;6&quot;);
+            list.add(&quot;2&quot;);
+            list.add(&quot;1&quot;);
+            System.out.println(&quot;去重前：&quot;+list);
+            list = del_duplication(list);
+            System.out.println(&quot;去重后：&quot;+list);
+        }</code></pre>
+<p>控制台输出结果：</p>
+<p>去重前：[1, 2, 3, 4, 5, 6, 2, 1]<br>去重后：[1, 2, 3, 4, 5, 6]</p>
+<h3 id="3-用JDK8的特性"><a href="#3-用JDK8的特性" class="headerlink" title="3. 用JDK8的特性"></a>3. 用JDK8的特性</h3><pre><code class="java">public static List&lt;String&gt; del_duplication(List&lt;String&gt; list) {
+        List&lt;String&gt; myList = list.stream().distinct().collect(Collectors.toList());
+        return myList;
+    }
+public static void main(String[] args) {
+            List&lt;String&gt; list = new ArrayList&lt;String&gt;();
+            list.add(&quot;1&quot;);
+            list.add(&quot;2&quot;);
+            list.add(&quot;3&quot;);
+            list.add(&quot;4&quot;);
+            list.add(&quot;5&quot;);
+            list.add(&quot;6&quot;);
+            list.add(&quot;2&quot;);
+            list.add(&quot;1&quot;);
+            System.out.println(&quot;去重前：&quot;+list);
+            list = del_duplication(list);
+            System.out.println(&quot;去重后：&quot;+list);
+        }</code></pre>
+<p>控制台输出结果：</p>
+<p>去重前：[1, 2, 3, 4, 5, 6, 2, 1]<br>去重后：[1, 2, 3, 4, 5, 6]</p>
 
             </div>
             <hr>
@@ -229,16 +258,11 @@
                 <div class="post-prevnext row">
                   <div class="post-prev col-12 col-md-6">
                     
-                      <a href="/2020/04/27/String%E7%9A%84==%E5%92%8Cequals()/">
-                        <i class="fa fa-chevron-left"></i>
-                        <span>String的==和equals()</span>
-                      </a>
-                    
                   </div>
                   <div class="post-next col-12 col-md-6">
                     
-                      <a href="/2020/04/04/SimpleDateFormat%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F%E5%8C%96/">
-                        <span>SimpleDateFormat日期格式化</span>
+                      <a href="/2020/04/27/String%E7%9A%84==%E5%92%8Cequals()/">
+                        <span>String的==和equals()</span>
                         <i class="fa fa-chevron-right"></i>
                       </a>
                     
@@ -411,7 +435,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "MySQL常见的7种通用的Join查询&nbsp;",
+        "面试题--List集合如何去重&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,
