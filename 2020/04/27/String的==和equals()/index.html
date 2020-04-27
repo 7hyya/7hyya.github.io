@@ -219,7 +219,7 @@ str3 == str4: true
 str1 == str3: false</code></pre><p>结合下图对象在内存中的地址，来进行深入理解一下：</p>
 </li>
 </ul>
-<p><img src="D:%5C7hyyaBlog%5CHexo%5Cpublic%5Cimg%5CblogImages%5Cimage-20200427192325826.png" srcset="/img/loading.gif" alt="image-20200427192325826"></p>
+<p><img src="/2020/04/27/String%E7%9A%84==%E5%92%8Cequals()/image-20200427192325826.png" srcset="/img/loading.gif" alt="image-20200427192325826"></p>
 <p>从上图中可知，String类型的内容是保存在堆内存中的，栈内存仅保存指向堆内存的地址，上面说到过String使用直接赋值生成对象，会用到缓冲池机制。在执行String str1 = “Java String test”时，在缓冲池中并没有“Java String test”字符串，所以生成一个“Java String test”字符串。执行到String str2 = “Java String test”时，缓冲池中已存在“Java String test”字符串，所以不需要生成一个新的“Java String test”字符串，而是直接使用该字符串。使用new关键字调用构造方法生成字符串时，不会用到缓冲池机制。每次调用一次就会生成一个新的字符串对象。</p>
 <p>由于缓冲池机制，str1和str2使用相同的字符串对象，所以它们的内存地址是相等的，所以使用“==”关系运算符比较str1和str2结果值为true。同理，因为str1和str3指向不同的内存地址，所以str1==str3的结果值是false。从上图中可见，str3和str4指向同一内存地址，所以str3==str4的结果值为true。</p>
 <p>上面通过代码来验证出了“==”是比较的对象的内存地址，下面看看equals()，上代码：</p>
